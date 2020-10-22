@@ -1,8 +1,6 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "PawnBase.h"
 #include "Components/CapsuleComponent.h"
+
 // Sets default values
 APawnBase::APawnBase()
 {

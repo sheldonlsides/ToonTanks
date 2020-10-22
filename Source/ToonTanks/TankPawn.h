@@ -1,36 +1,39 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
-#include "GameFramework/Actor.h"
-#include "PawnBase.generated.h"
+#include "PawnBase.h"
+#include "TankPawn.generated.h"
 
-class UCapsuleComponent;
+class USpringArmComponent;
+class UCameraComponent;
 
 UCLASS()
-class TOONTANKS_API APawnBase : public APawn
-{
+class TOONTANKS_API ATankPawn : public APawnBase
+{	
 	GENERATED_BODY()
-	
+
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
-	UCapsuleComponent* CapsuleComp;
+	USpringArmComponent* SpringArm;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
-	UStaticMeshComponent* BaseMesh;
+	UCameraComponent* Camera;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
-	UStaticMeshComponent* TurrentMesh;
+	FVector MoveDirection;
+	FQuat RotationDirection;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
-	USceneComponent* ProjectileSpawnPoint;
+	void CalculateMoveInput(float value);
+	void CalculateRotateInput(float value);
+
+	void Move();
+	void Rotate();
+
+	float MoveSpeed = 100.0f;
+	float RotateSpeed = 100.0f;
 
 public:
-	// Sets default values for this pawn's properties
-	APawnBase();
-
+	ATankPawn();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -41,4 +44,5 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	
 };
