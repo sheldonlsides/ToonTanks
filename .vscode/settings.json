@@ -1,5 +1,6 @@
 {
 	"files.exclude": {
+		"/Users/sheldonsides/Documents/projects/GameDev/UnrealEngine/ToonTanks/Saved": true,
 		"/Users/sheldonsides/Documents/projects/GameDev/UnrealEngine/ToonTanks/Content": true,
 		"/Users/sheldonsides/Documents/projects/GameDev/UnrealEngine/ToonTanks/DerivedDataCache": true,
 		"/Users/sheldonsides/Documents/projects/GameDev/UnrealEngine/ToonTanks/.git": true,
