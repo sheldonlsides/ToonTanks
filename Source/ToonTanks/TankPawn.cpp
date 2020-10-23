@@ -44,7 +44,7 @@ void ATankPawn::CalculateMoveInput(float value)
 
 void ATankPawn::CalculateRotateInput(float value) 
 {
-	float RotateAmount =  value * MoveSpeed * GetWorld()->DeltaTimeSeconds;
+	float RotateAmount =  (value * 100)  * GetWorld()->DeltaTimeSeconds;
 	FRotator Rotation = FRotator(0, RotateAmount, 0);
 	RotationDirection = FQuat(Rotation);
 }
