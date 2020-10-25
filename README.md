@@ -1,5 +1,5 @@
 # Toon Tanks 
-### Simple cartoon tank game. Written in C++ using Unreal Engine 4 
+### Simple cartoon tank game.
 
 Written in C++ using Unreal Engine 4
 
