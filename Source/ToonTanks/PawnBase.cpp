@@ -1,6 +1,6 @@
 #include "PawnBase.h"
 #include "Components/CapsuleComponent.h"
-#include "ProjectileMovementBase.h"
+#include "ProjectileBase.h"
 // Sets default values
 APawnBase::APawnBase()
 {
@@ -50,7 +50,7 @@ void APawnBase::Fire()
 		// sets current rotation of the projectile spawn
 		FRotator SpawnRotation = ProjectileSpawnPoint->GetComponentRotation();
 		
-		AProjectileMovementBase* TempProjectile = GetWorld()->SpawnActor<AProjectileMovementBase>(ProjectileClass, SpawnLocation, SpawnRotation);
+		AProjectileBase* TempProjectile = GetWorld()->SpawnActor<AProjectileBase>(ProjectileClass, SpawnLocation, SpawnRotation);
 
 		TempProjectile->SetOwner(this);
 	}

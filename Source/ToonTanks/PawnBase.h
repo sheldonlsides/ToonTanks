@@ -8,7 +8,7 @@
 #include "PawnBase.generated.h"
 
 class UCapsuleComponent;
-class AProjectileMovementBase;
+class AProjectileBase;
 
 UCLASS()
 class TOONTANKS_API APawnBase : public APawn
@@ -31,8 +31,9 @@ private:
 
 	//VARIABLES
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile", meta = (AllowPrivateAccess = "true"))
-	//ensures only projectiles of type AProjectileMovementBase can be used
-	TSubclassOf<AProjectileMovementBase> ProjectileClass;
+
+	//ensures only projectiles of type AProjectileBase can be used
+	TSubclassOf<AProjectileBase> ProjectileClass;
 
 public:
 	// Sets default values for this pawn's properties
