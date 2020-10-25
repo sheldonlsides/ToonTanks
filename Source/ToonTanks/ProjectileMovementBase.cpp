@@ -13,7 +13,7 @@ AProjectileMovementBase::AProjectileMovementBase()
 
 	//no need to attach projectile movement conponents to anything
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement Component"));
-	ProjectileMovement->InitialSpeed = MovementSpeed;
+	ProjectileMovement->InitialSpeed = 5000.0f;
 	ProjectileMovement->MaxSpeed = MovementSpeed;
 	ProjectileMovement->ProjectileGravityScale = Gravity;
 	ProjectileMovement->bRotationFollowsVelocity = true;
