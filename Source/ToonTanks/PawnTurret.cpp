@@ -1,5 +1,6 @@
 #include "PawnTurret.h"
 #include "Kismet/GameplayStatics.h"
+#include "TankPawn.h"
 
 void APawnTurret::BeginPlay() 
 {
@@ -11,9 +12,21 @@ void APawnTurret::BeginPlay()
     PlayerPawn = Cast<ATankPawn>(UGameplayStatics::GetPlayerPawn(this, 0));
 }
 
+void APawnTurret::HandleDestruction() 
+{
+    Super::HandleDestruction();
+    Destroy();
+}
+
 void APawnTurret::Tick(float DeltaTime) 
 {
     Super::Tick(DeltaTime);
+
+    if (!PlayerPawn || ReturnDistanceToPlayer() >= TurretFiringRange) {
+        return;
+    }
+
+    RotateTurret(PlayerPawn->GetActorLocation());
 }
 
 
@@ -25,9 +38,13 @@ void APawnTurret::CheckFireCondition()
     }
 
     //check If player is in firing range
-    if(ReturnDistanceToPlayer() <= TurrentFiringRange){
-        UE_LOG(LogTemp, Warning, TEXT("Player is in firing range"));
+    if(ReturnDistanceToPlayer() <= TurretFiringRange){
+       Fire();
     }
+}
+
+void Fire() {
+     UE_LOG(LogTemp, Warning, TEXT("Turret firing at player"));
 }
 
 float APawnTurret::ReturnDistanceToPlayer() 
@@ -40,5 +57,5 @@ float APawnTurret::ReturnDistanceToPlayer()
     //GetActorLocation() - gets location of current class object (turret)
 
     //returns the distance of the turrent to the player
-    return FVector::Dist(PlayerPawn->GetActorLocation(), GetActorLocation())
+    return FVector::Dist(PlayerPawn->GetActorLocation(), GetActorLocation());
 }
