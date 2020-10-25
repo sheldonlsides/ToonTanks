@@ -30,13 +30,15 @@ protected:
 	TSubclassOf<UDamageType> DamageType;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Move",  meta=(AllowPrivateAccess = "true"))
-	float MovementSpeed = 750;
+	float MovementSpeed = 5000.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gravity",  meta=(AllowPrivateAccess = "true"))
+	float Gravity = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage",  meta=(AllowPrivateAccess = "true"))
 	float Damage = 50;
 
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	
 
 };

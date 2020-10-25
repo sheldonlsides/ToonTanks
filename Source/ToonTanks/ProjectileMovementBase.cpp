@@ -15,6 +15,8 @@ AProjectileMovementBase::AProjectileMovementBase()
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement Component"));
 	ProjectileMovement->InitialSpeed = MovementSpeed;
 	ProjectileMovement->MaxSpeed = MovementSpeed;
+	ProjectileMovement->ProjectileGravityScale = Gravity;
+	ProjectileMovement->bRotationFollowsVelocity = true;
 	InitialLifeSpan = 3.0f;
 }
 
@@ -23,12 +25,5 @@ void AProjectileMovementBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
-}
-
-// Called every frame
-void AProjectileMovementBase::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
 }
 
