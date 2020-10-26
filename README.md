@@ -9,5 +9,5 @@ Written in C++ using Unreal Engine 4
 * Player control system to move tank in the X & Y plane
 * Ability for an enemy AI to track the location of the player
 * System for both player and enemy AI to fire projectiles
-* Damage system for player and enemy AI (detects when project hits target)
+* Damage system for player and enemy AI (detects when projectile hits target)
 * Creating a custom C++ GameMode class and creating a GameMode blueprint from the class
