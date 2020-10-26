@@ -36,8 +36,6 @@ void AProjectileBase::BeginPlay()
 
 void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) 
 {
-	UE_LOG(LogTemp, Warning, TEXT("Target hit"));
-	
 	AActor* MyOwner = GetOwner();
 
 	if (!MyOwner){
@@ -48,6 +46,7 @@ void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 	if (OtherActor && OtherActor != this && OtherActor != MyOwner) {
 		//applies damage to another actor in the world
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, DamageType);
+
 		UE_LOG(LogTemp, Warning, TEXT("Target hit"));
 
 		Destroy();
