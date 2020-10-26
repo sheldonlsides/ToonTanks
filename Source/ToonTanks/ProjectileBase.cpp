@@ -4,6 +4,7 @@
 #include "ProjectileBase.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AProjectileBase::AProjectileBase()
@@ -12,6 +13,7 @@ AProjectileBase::AProjectileBase()
 	PrimaryActorTick.bCanEverTick = true;
 
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Projectile Mesh"));
+
 	RootComponent = ProjectileMesh;
 
 	//no need to attach projectile movement conponents to anything
@@ -27,5 +29,27 @@ AProjectileBase::AProjectileBase()
 void AProjectileBase::BeginPlay()
 {
 	Super::BeginPlay();
+
+	//function to detect what actor was hit in the world
+	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectileBase::OnHit);
+}
+
+void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) 
+{
+	UE_LOG(LogTemp, Warning, TEXT("Target hit"));
 	
+	AActor* MyOwner = GetOwner();
+
+	if (!MyOwner){
+		return;
+	}
+
+	//checks to ensure not colliding with self and not colliding with the parent that created the projectile
+	if (OtherActor && OtherActor != this && OtherActor != MyOwner) {
+		//applies damage to another actor in the world
+		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, DamageType);
+		UE_LOG(LogTemp, Warning, TEXT("Target hit"));
+
+		Destroy();
+	}
 }

@@ -7,5 +7,7 @@ Written in C++ using Unreal Engine 4
 
 * Creating base C++ classes to create blueprints from
 * Player control system to move tank in the X & Y plane
-* Ability for an AI enemy to track the location of the player
+* Ability for an enemy AI to track the location of the player
 * System for both player and enemy AI to fire projectiles
+* Damage system for player and enemy AI (detects when project hits target)
+* Creating a custom C++ GameMode class and creating a GameMode print from the class

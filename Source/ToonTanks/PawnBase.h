@@ -31,9 +31,7 @@ private:
 
 	//VARIABLES
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile", meta = (AllowPrivateAccess = "true"))
-
-	//ensures only projectiles of type AProjectileBase can be used
-	TSubclassOf<AProjectileBase> ProjectileClass;
+	TSubclassOf<AProjectileBase> ProjectileClass; //ensures only projectiles of type AProjectileBase can be used
 
 public:
 	// Sets default values for this pawn's properties
