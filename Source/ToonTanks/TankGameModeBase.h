@@ -17,12 +17,12 @@ class TOONTANKS_API ATankGameModeBase : public AGameModeBase
 private:
 	void HandleGameStart();
 	void HandleGameOver(bool PlayerWon);
-
+	int32 GetTargetTurretCount();
 	//adding a pointer to the players tank
 	ATankPawn* PlayerTank;
 
 	int32 TargetTurrets = 0;
-	
+
 public:
 	void  ActorDied(AActor* DeadActor);
 
