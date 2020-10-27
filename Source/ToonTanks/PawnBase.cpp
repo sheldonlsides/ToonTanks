@@ -43,7 +43,6 @@ void APawnBase::Fire()
 	
 	//checks to see if projectile reference is valid
 	if(ProjectileClass) {
-		UE_LOG(LogTemp, Warning, TEXT("Firing button pressed"));
 		// sets current location of the projectile spawn (since it is attached to turret that will be the relative location)
 		FVector SpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
 

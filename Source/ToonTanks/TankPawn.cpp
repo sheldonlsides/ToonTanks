@@ -27,6 +27,7 @@ void ATankPawn::HandleDestruction()
 {
 	Super::HandleDestruction();
 	//Hide Player
+	UE_LOG(LogTemp, Warning, TEXT("Player died"));
 }
 
 // Called every frame

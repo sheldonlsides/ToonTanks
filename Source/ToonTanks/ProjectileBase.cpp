@@ -47,8 +47,6 @@ void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 		//applies damage to another actor in the world
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, DamageType);
 
-		UE_LOG(LogTemp, Warning, TEXT("Target hit"));
-
 		Destroy();
 	}
 }

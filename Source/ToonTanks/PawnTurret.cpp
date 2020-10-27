@@ -15,6 +15,7 @@ void APawnTurret::BeginPlay()
 void APawnTurret::HandleDestruction() 
 {
     Super::HandleDestruction();
+    UE_LOG(LogTemp, Warning, TEXT("Destroyed turret"));
     Destroy();
 }
 
