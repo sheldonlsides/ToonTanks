@@ -21,7 +21,7 @@ void UHealthComponent::BeginPlay()
 
 	//sets default health
 	Health = DefaultHealth;
-
+    
 	//gets reference to gamemode
 	GameModeRef = Cast<ATankGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()));
 
@@ -35,17 +35,31 @@ void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDam
 		return;
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Pawn taking damage"));
+	// UE_LOG(LogTemp, Warning, TEXT("Pawn taking damage"));
+	
+	// FString ActorSendingDamage = InstigatedBy->GetClass()->GetFName().ToString();
+	// // FString ActorSendingDamage = InstigatedBy->GetComponentByClass(->GetFName().ToString();
+ 	// UE_LOG(LogTemp, Warning, TEXT("Damage instigated by %s"), *ActorSendingDamage);
+
+	// //  FString ActorSendingDamage = InstigatedBy->GetComponentByClass()->GetFName().ToString();
+ 	// // UE_LOG(LogTemp, Warning, TEXT("Damage instigated by %s"), *ActorSendingDamage);
+
+	// FString ActorRecievingDamage = DamagedActor->GetClass()->GetFName().ToString();
+	// // FString ActorRecievingDamage = DamagedActor->
+ 	// UE_LOG(LogTemp, Warning, TEXT("Damaged Actor is %s"), *ActorRecievingDamage);
+
 
 	//sets health and ensures that is not below zero or above the default health allowed
 	Health = FMath::Clamp(Health - Damage, 0.0f, DefaultHealth);
 
-	//checks to see if the component has less than or equal zero health
-	if (Health <= 0) {
-		if(GameModeRef) {
-			GameModeRef->ActorDied(GetOwner());
-		} else {
-			UE_LOG(LogTemp, Warning, TEXT("Health Component has no reference to the GameMode"));
+	if (DamageCauser->GetClass() != DamagedActor->GetClass()) {
+		//checks to see if the component has less than or equal zero health
+		if (Health <= 0) {
+			if(GameModeRef) {
+				GameModeRef->ActorDied(GetOwner());
+			} else {
+				UE_LOG(LogTemp, Warning, TEXT("Health Component has no reference to the GameMode"));
+			}
 		}
 	}
 }

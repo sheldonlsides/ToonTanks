@@ -37,8 +37,18 @@ void AProjectileBase::BeginPlay()
 void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) 
 {
 	AActor* MyOwner = GetOwner();
+	FString ActorSendingDamage = GetOwner()->GetClass()->GetDefaultObjectName().ToString();
+	// FString ActorSendingDamage = InstigatedBy->GetClass()->GetFName().ToString();
+	UE_LOG(LogTemp, Warning, TEXT("Actor Sending damage is %s"), *ActorSendingDamage);
 
-	if (!MyOwner){
+	FString ActorRecievingDamage = OtherActor->GetClass()->GetDefaultObjectName().ToString(); 
+	// ->GetFName().ToString();
+	UE_LOG(LogTemp, Warning, TEXT("Actor Receiving damage by %s"), *ActorRecievingDamage);
+
+	// logic check to make sure projectile can't cause damage to itself
+	// OR logic checks to make sure friendly fire doesn't occur between enemy turrets
+	if (!MyOwner || (ActorSendingDamage == ActorRecievingDamage)){
+		Destroy();
 		return;
 	}
 

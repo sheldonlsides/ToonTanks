@@ -43,6 +43,7 @@ void APawnBase::Fire()
 	
 	//checks to see if projectile reference is valid
 	if(ProjectileClass) {
+		
 		// sets current location of the projectile spawn (since it is attached to turret that will be the relative location)
 		FVector SpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
 
@@ -76,6 +77,5 @@ void APawnBase::Tick(float DeltaTime)
 void APawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 

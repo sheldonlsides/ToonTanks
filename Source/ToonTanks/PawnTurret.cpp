@@ -40,13 +40,11 @@ void APawnTurret::CheckFireCondition()
 
     //check If player is in firing range
     if(ReturnDistanceToPlayer() <= TurretFiringRange){
-       Fire();
+        UE_LOG(LogTemp, Warning, TEXT("Turret firing"));
+        Fire();
     }
 }
 
-void Fire() {
-     UE_LOG(LogTemp, Warning, TEXT("Turret firing at player"));
-}
 
 float APawnTurret::ReturnDistanceToPlayer() 
 {

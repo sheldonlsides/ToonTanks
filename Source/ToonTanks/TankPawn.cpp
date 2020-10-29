@@ -46,7 +46,6 @@ void ATankPawn::Tick(float DeltaTime)
 
 		//gets the vector of where cursor is hitting
 		FVector HitLocation = TraceHitResult.ImpactPoint;
-		
 
 		//calls the rotate turret function and turns player turrent in that direction
 		RotateTurret(HitLocation);
