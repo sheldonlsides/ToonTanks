@@ -12,3 +12,4 @@ Written in C++ using Unreal Engine 4
 * Health system for player and enemy AI (detects when projectile hits target)
 * Creating a custom C++ GameMode class and creating a GameMode blueprint from the class
 * Displaying UI widgets on for game start and game end events
+* Create a custom Player Controller

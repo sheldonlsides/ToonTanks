@@ -8,6 +8,7 @@
 
 class APawnTurret;
 class ATankPawn;
+class APlayerControllerBase;
 
 UCLASS()
 class TOONTANKS_API ATankGameModeBase : public AGameModeBase
@@ -18,10 +19,15 @@ private:
 	void HandleGameStart();
 	void HandleGameOver(bool PlayerWon);
 	int32 GetTargetTurretCount();
+
 	//adding a pointer to the players tank
 	ATankPawn* PlayerTank;
 
+	APlayerControllerBase* PlayerControllerRef;
+
 	int32 TargetTurrets = 0;
+
+	void SetPlayEnabled(bool bEnabled);
 
 public:
 	void  ActorDied(AActor* DeadActor);
