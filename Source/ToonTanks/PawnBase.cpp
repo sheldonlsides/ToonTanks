@@ -1,6 +1,9 @@
 #include "PawnBase.h"
 #include "Components/CapsuleComponent.h"
 #include "ProjectileBase.h"
+#include "HealthComponent.h"
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values
 APawnBase::APawnBase()
 {
@@ -15,6 +18,8 @@ APawnBase::APawnBase()
 
 	TurretMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Turret Mesh"));
 	TurretMesh->SetupAttachment(BaseMesh);
+
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
 
 	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
@@ -60,6 +65,8 @@ void APawnBase::HandleDestruction()
 {
 	// Universal functionality
 	// Play death effects particle, sound and camera shake
+	UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticle, GetActorLocation());
+
 
 	// Then do Child overrrides
 	// Turret - Inform GameMode turret destroyed -> Destroy() self

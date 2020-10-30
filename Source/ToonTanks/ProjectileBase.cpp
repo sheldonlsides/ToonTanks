@@ -57,7 +57,11 @@ void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 	if (OtherActor && OtherActor != this && OtherActor != MyOwner) {
 		//applies damage to another actor in the world
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, DamageType);
+		
+		//spawns a hit particle in the impact location
+		UGameplayStatics::SpawnEmitterAtLocation(this, HitParticle, GetActorLocation());
 
+		//destroys projectile after impact
 		Destroy();
 	}
 }
