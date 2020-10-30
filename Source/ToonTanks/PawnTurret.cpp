@@ -39,7 +39,7 @@ void APawnTurret::CheckFireCondition()
     }
 
     //check If player is in firing range
-    if(ReturnDistanceToPlayer() <= TurretFiringRange){
+    if(ReturnDistanceToPlayer() <= TurretFiringRange && PlayerPawn->GetIsPlayerAlive()){
         UE_LOG(LogTemp, Warning, TEXT("Turret firing"));
         Fire();
     }

@@ -28,6 +28,19 @@ void ATankPawn::HandleDestruction()
 	Super::HandleDestruction();
 	//Hide Player
 	UE_LOG(LogTemp, Warning, TEXT("Player died"));
+
+	bIsPlayerAlive = false;
+
+	//hide tank after death
+	SetActorHiddenInGame(true);
+
+	//stop tick function on tank (causes movement input to stop)
+	SetActorTickEnabled(false);
+}
+
+bool ATankPawn::GetIsPlayerAlive() 
+{
+	return bIsPlayerAlive;
 }
 
 // Called every frame
