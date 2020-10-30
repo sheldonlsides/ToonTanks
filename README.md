@@ -14,4 +14,4 @@ Written in C++ using Epic Games - Unreal Engine 4
 * Creating a custom C++ GameMode class and creating a GameMode blueprint from the class
 * Displaying UI widgets for game start and game end events
 * Create a custom Player Controller for detecting player events (Example: Is player input enabled)
-* Using Particle System\Effects for projectiles and explosions
+* Using Particle Systems\Effects for projectiles and explosions
