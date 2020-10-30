@@ -31,7 +31,7 @@ void ATankPawn::HandleDestruction()
 
 	bIsPlayerAlive = false;
 
-	//hide tank after death
+	//hide tank after death, don't call Destroy() because it will also remove camera
 	SetActorHiddenInGame(true);
 
 	//stop tick function on tank (causes movement input to stop)
