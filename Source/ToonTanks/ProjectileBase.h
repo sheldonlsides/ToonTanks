@@ -39,8 +39,14 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage",  meta=(AllowPrivateAccess = "true"))
 	float Damage = 50;
 
-	UPROPERTY(EditAnywhere, Category = "Effects")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effects",  meta=(AllowPrivateAccess = "true"))
+	UParticleSystemComponent* ParticleTrail;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effects",  meta=(AllowPrivateAccess = "true"))
 	UParticleSystem* HitParticle;
+
+	// UPROPERTY(EditAnywhere, Category = "Effects")
+	// UParticleSystem* TrailParticle;
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
