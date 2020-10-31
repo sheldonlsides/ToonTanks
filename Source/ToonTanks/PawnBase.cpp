@@ -70,8 +70,10 @@ void APawnBase::HandleDestruction()
 
 	// Then do Child overrrides
 	// Turret - Inform GameMode turret destroyed -> Destroy() self
-
+	UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
 	// PlayerTank - Inform GameMode player tank destroyed -> Hide() all components && stop movement input
+
+	GetWorld()->GetFirstPlayerController()->ClientPlayCameraShake(DeathShake);
 }
 
 // Called every frame

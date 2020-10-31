@@ -36,6 +36,8 @@ void AProjectileBase::BeginPlay()
 
 	//function to detect what actor was hit in the world
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectileBase::OnHit);
+
+	UGameplayStatics::PlaySoundAtLocation(this, LaunchSound, GetActorLocation());
 }
 
 void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) 
@@ -64,6 +66,10 @@ void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 		
 		//spawns a hit particle in the impact location
 		UGameplayStatics::SpawnEmitterAtLocation(this, HitParticle, GetActorLocation());
+		UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
+
+		//adds camera shake effect when project hits target
+		GetWorld()->GetFirstPlayerController()->ClientPlayCameraShake(HitShake);
 
 		//destroys projectile after impact
 		Destroy();

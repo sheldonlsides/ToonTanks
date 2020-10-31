@@ -15,3 +15,4 @@ Written in C++ using Epic Games - Unreal Engine 4
 * Displaying UI widgets for game start and game end events
 * Create a custom Player Controller for detecting player events (Example: Is player input enabled)
 * Using Particle Systems\Effects for projectiles and explosions
+* Camera shake affect when target is hit and destroyed
